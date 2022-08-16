@@ -1,8 +1,9 @@
 function TodoItem({todo}) {
     return (
         <div>
-            <span>id: {todo.id}</span>
-            <span>text: {todo.text}</span>
+            <span>id: {todo.id} </span>
+            <span>text: {todo.text} </span>
+            <span>completed: {todo.isCompleted ? 'yes' : 'no'}</span>
         </div>
     )
 }
