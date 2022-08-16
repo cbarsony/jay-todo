@@ -6,7 +6,9 @@ import TodoManager from './TodoManager'
 function TodoApp({todos, addTodo, toggleTodo}) {
     return (
         <div>
-            <AddTodo />
+            <AddTodo
+                onAddTodo={addTodo}
+            />
             <TodoList
                 todos={todos}
             />
@@ -23,8 +25,9 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addTodo: () => dispatch({
+        addTodo: (text) => dispatch({
             type: 'todos/added',
+            payload: text,
         }),
         toggleTodo: () => dispatch({
             type: 'todos/toggled',
