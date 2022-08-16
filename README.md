@@ -1,2 +1,5 @@
 # Jay-todo
-![design](/assets/jay-todo.jpg)
+## UI design
+![UI design](/assets/jay-todo.jpg)
+## Component design
+![Component design](/assets/jay-components.jpg)
