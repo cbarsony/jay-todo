@@ -1,6 +1,8 @@
-import {connect} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
-function TodoManager({clear, filter, onChangeFilter}) {
+function TodoManager({clear, onChangeFilter}) {
+    const filter = useSelector(store => store.filter)
+    const dispatch = useDispatch()
     let isCompletedChecked, isPendingChecked
 
     switch(filter) {
@@ -21,11 +23,11 @@ function TodoManager({clear, filter, onChangeFilter}) {
     }
 
     const handleCompletedChange = e => {
-        onChangeFilter(e.target.checked ? 'c-on' : 'c-off')
+        dispatch({ type: e.target.checked ? 'c-on' : 'c-off' })
     }
 
     const handlePendingChange = e => {
-        onChangeFilter(e.target.checked ? 'p-on' : 'p-off')
+        dispatch({ type: e.target.checked ? 'p-on' : 'p-off' })
     }
 
     return (
@@ -53,12 +55,4 @@ function TodoManager({clear, filter, onChangeFilter}) {
     )
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        clear: () => dispatch({
-            type: 'todos/clear',
-        })
-    }
-}
-
-export default connect(null, mapDispatchToProps)(TodoManager)
+export default TodoManager

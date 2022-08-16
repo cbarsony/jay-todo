@@ -1,10 +1,12 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-function AddTodo({onAddTodo}) {
+function AddTodo() {
     const [todoText, setTodoText] = useState('')
+    const dispatch = useDispatch()
 
     const handleAddTodo = () => {
-        onAddTodo(todoText)
+        dispatch({type: 'todos/added', payload: todoText})
         setTodoText('')
     }
 

@@ -1,4 +1,4 @@
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 function TodoItem({todo, toggle}) {
     const handleChange = () => {
@@ -20,7 +20,7 @@ function TodoItem({todo, toggle}) {
 function mapDispatchToProps(dispatch) {
     return {
         toggle: todoId => dispatch({
-            type: 'todos/toggle',
+            type: 'todos/toggled',
             payload: todoId,
         })
     }
