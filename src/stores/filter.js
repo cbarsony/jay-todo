@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux'
-
 const filter = (state = 'ALL', action) => {
     switch(state) {
 
@@ -13,7 +11,6 @@ const filter = (state = 'ALL', action) => {
             else {
                 return state
             }
-            break
 
         case 'COMPLETED':
             if(action.type === 'c-off') {
@@ -25,7 +22,6 @@ const filter = (state = 'ALL', action) => {
             else {
                 return state
             }
-            break
 
         case 'PENDING':
             if(action.type === 'c-on') {
@@ -37,7 +33,6 @@ const filter = (state = 'ALL', action) => {
             else {
                 return state
             }
-            break
 
         default:
             return state
