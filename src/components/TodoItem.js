@@ -7,8 +7,7 @@ function TodoItem({todo, toggle}) {
 
     return (
         <div>
-            <span>id: {todo.id} </span>
-            <span>text: {todo.text} </span>
+            <span>{todo.text}</span>
             <input
                 type="checkbox"
                 checked={todo.isCompleted}
