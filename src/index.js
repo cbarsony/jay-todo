@@ -55,6 +55,11 @@ function reducer(state = initialState, action) {
           }
         })
       }
+    case 'todos/clear':
+      return {
+        ...state,
+        todos: [],
+      }
     default:
       return state
   }

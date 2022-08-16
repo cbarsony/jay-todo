@@ -20,7 +20,7 @@ function TodoItem({todo, toggle}) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        toggle: (todoId) => dispatch({
+        toggle: todoId => dispatch({
             type: 'todos/toggle',
             payload: todoId,
         })
