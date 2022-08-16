@@ -25,7 +25,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        addTodo: (text) => dispatch({
+        addTodo: text => dispatch({
             type: 'todos/added',
             payload: text,
         }),

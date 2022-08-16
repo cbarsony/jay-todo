@@ -25,8 +25,10 @@ const initialState = {
 }
 
 function reducer(state = initialState, action) {
+  console.log(action)
+
   switch (action.type) {
-    case "todos/added":
+    case 'todos/added':
       return {
         ...state,
         todos: [
@@ -37,6 +39,21 @@ function reducer(state = initialState, action) {
             isCompleted: false,
           },
         ],
+      }
+    case 'todos/toggle':
+      return {
+        ...state,
+        todos: state.todos.map(todo => {
+          if(todo.id === action.payload) {
+            return {
+              ...todo,
+              isCompleted: !todo.isCompleted,
+            }
+          }
+          else {
+            return todo
+          }
+        })
       }
     default:
       return state
