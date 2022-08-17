@@ -1,9 +1,9 @@
-import { connect } from 'react-redux'
+import { useCallback } from 'react'
 
-function TodoItem({todo, toggle}) {
-    const handleChange = () => {
-        toggle(todo.id)
-    }
+function TodoItem({todo, onToggle}) {
+    const handleChange = useCallback(() => {
+        onToggle(todo.id)
+    }, [onToggle, todo.id])
 
     return (
         <div>
@@ -17,13 +17,4 @@ function TodoItem({todo, toggle}) {
     )
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        toggle: todoId => dispatch({
-            type: 'todos/toggled',
-            payload: todoId,
-        })
-    }
-}
-
-export default connect(null, mapDispatchToProps)(TodoItem)
+export default TodoItem

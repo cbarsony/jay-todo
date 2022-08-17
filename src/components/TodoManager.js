@@ -1,6 +1,7 @@
+import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-function TodoManager({clear, onChangeFilter}) {
+function TodoManager() {
     const filter = useSelector(store => store.filter)
     const dispatch = useDispatch()
     let isCompletedChecked, isPendingChecked
@@ -19,16 +20,21 @@ function TodoManager({clear, onChangeFilter}) {
             isPendingChecked = true
             break
         default:
-            throw new Error(`Unknown filter value: ${filter}`)
+            isCompletedChecked = true
+            isPendingChecked = true
     }
 
-    const handleCompletedChange = e => {
+    const handleCompletedChange = useCallback(e => {
         dispatch({ type: e.target.checked ? 'c-on' : 'c-off' })
-    }
+    }, [dispatch])
 
-    const handlePendingChange = e => {
+    const handlePendingChange = useCallback(e => {
         dispatch({ type: e.target.checked ? 'p-on' : 'p-off' })
-    }
+    }, [dispatch])
+
+    const handleClearClick = useCallback(() => {
+        dispatch({ type: 'todos/cleared' })
+    }, [dispatch])
 
     return (
         <div>
@@ -50,7 +56,7 @@ function TodoManager({clear, onChangeFilter}) {
                 />
                 <label htmlFor="checkbox-pending">Pending</label>
             </div>
-            <button onClick={clear}>Clear</button>
+            <button onClick={handleClearClick}>Clear</button>
         </div>
     )
 }

@@ -1,9 +1,18 @@
-import { useSelector } from 'react-redux'
+import { useCallback } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import TodoItem from './TodoItem'
 
 function TodoList() {
     const todos = useSelector(state => state.todos)
     const filter = useSelector(state => state.filter)
+    const dispatch = useDispatch()
+
+    const handleToggle = useCallback(todoId => {
+        dispatch({
+            type: 'todos/toggled',
+            payload: todoId,
+        })
+    }, [dispatch])
     
     const filteredTodos = todos.filter(todo => {
         if(filter === 'ALL') {
@@ -24,6 +33,7 @@ function TodoList() {
                 <TodoItem
                     key={todo.id}
                     todo={todo}
+                    onToggle={handleToggle}
                 />
             ))}
         </div>
