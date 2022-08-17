@@ -4,25 +4,9 @@ import { useSelector, useDispatch } from 'react-redux'
 function TodoManager() {
     const filter = useSelector(store => store.filter)
     const dispatch = useDispatch()
-    let isCompletedChecked, isPendingChecked
 
-    switch(filter) {
-        case 'ALL':
-            isCompletedChecked = true
-            isPendingChecked = true
-            break
-        case 'COMPLETED':
-            isCompletedChecked = true
-            isPendingChecked = false
-            break
-        case 'PENDING':
-            isCompletedChecked = false
-            isPendingChecked = true
-            break
-        default:
-            isCompletedChecked = true
-            isPendingChecked = true
-    }
+    const isCompletedChecked = filter === 'ALL' || filter === 'COMPLETED'
+    const isPendingChecked = filter === 'ALL' || filter === 'PENDING'
 
     const handleCompletedChange = useCallback(e => {
         dispatch({ type: e.target.checked ? 'c-on' : 'c-off' })

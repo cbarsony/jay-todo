@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import TodoItem from './TodoItem'
+import {getFilteredTodos} from '../stores/selectors'
 
 function TodoList() {
-    const todos = useSelector(state => state.todos)
-    const filter = useSelector(state => state.filter)
+    const filteredTodos = useSelector(getFilteredTodos)
     const dispatch = useDispatch()
 
     const handleToggle = useCallback(todoId => {
@@ -13,20 +13,7 @@ function TodoList() {
             payload: todoId,
         })
     }, [dispatch])
-    
-    const filteredTodos = todos.filter(todo => {
-        if(filter === 'ALL') {
-            return true
-        }
 
-        if(todo.isCompleted) {
-            return filter === 'COMPLETED'
-        }
-        else {
-            return filter === 'PENDING'
-        }
-    })
-    
     return (
         <div>
             {filteredTodos.map(todo => (
