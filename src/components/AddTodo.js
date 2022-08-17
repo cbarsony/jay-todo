@@ -20,6 +20,7 @@ function AddTodo() {
                 value={todoText}
                 onChange={onInputChange}
                 type="text"
+                placeholder="Add new todo..."
             />
             <button
                 onClick={handleAddTodo}
