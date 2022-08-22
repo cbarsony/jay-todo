@@ -5,7 +5,7 @@ function TodoManager() {
     const filter = useSelector(store => store.filter)
     const dispatch = useDispatch()
 
-    const isCompletedChecked = filter === 'ALL' || filter === 'COMPLETED'
+    const is_completedChecked = filter === 'ALL' || filter === 'COMPLETED'
     const isPendingChecked = filter === 'ALL' || filter === 'PENDING'
 
     const handleCompletedChange = useCallback(e => {
@@ -26,7 +26,7 @@ function TodoManager() {
                 <input
                     id="checkbox-completed"
                     type="checkbox"
-                    checked={isCompletedChecked}
+                    checked={is_completedChecked}
                     onChange={handleCompletedChange}
                 />
                 <label htmlFor="checkbox-completed">Completed</label>

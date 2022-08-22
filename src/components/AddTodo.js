@@ -1,8 +1,10 @@
 import { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
+import useApi from '../hooks/api'
 
 function AddTodo() {
     const [todoText, setTodoText] = useState('')
+    const api = useApi()
     const dispatch = useDispatch()
 
     const onInputChange = useCallback(e => {
@@ -10,9 +12,11 @@ function AddTodo() {
     }, [])
 
     const handleAddTodo = useCallback(() => {
-        dispatch({type: 'todos/added', payload: todoText})
+        api.post('/todos', {text: todoText})
+            .then(response => dispatch({type: 'todos/loaded', payload: response.data}))
+
         setTodoText('')
-    }, [dispatch, todoText])
+    }, [api, dispatch, todoText])
 
     return (
         <div>

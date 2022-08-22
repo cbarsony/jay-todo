@@ -1,18 +1,20 @@
 import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import TodoItem from './TodoItem'
-import {getFilteredTodos} from '../stores/selectors'
+import { getFilteredTodos } from '../stores/selectors'
+import useApi from '../hooks/api'
 
 function TodoList() {
     const filteredTodos = useSelector(getFilteredTodos)
     const dispatch = useDispatch()
+    const api = useApi()
 
-    const handleToggle = useCallback(todoId => {
-        dispatch({
-            type: 'todos/toggled',
-            payload: todoId,
-        })
-    }, [dispatch])
+    const handleToggle = useCallback(todo => {
+        api.put(`/todos/${todo.id}`, todo)
+            .then(response => {
+                dispatch({type: 'todos/updated', payload: response.data})
+            })
+    }, [api, dispatch])
 
     return (
         <div>

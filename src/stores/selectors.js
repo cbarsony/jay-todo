@@ -11,7 +11,7 @@ export const getFilteredTodos = createSelector(
             return true
         }
 
-        if(todo.isCompleted) {
+        if(todo.is_completed) {
             return filter === 'COMPLETED'
         }
         else {
