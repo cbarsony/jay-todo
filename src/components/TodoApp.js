@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 import TodoManager from './TodoManager'
 import QueryFilter from './QueryFilter'
 import useApi from '../hooks/api'
-import { useDispatch } from 'react-redux'
 
 const TodoApp = () => {
-    const api = useApi()
     const dispatch = useDispatch()
+    const api = useApi()
 
     useEffect(() => {
         api.get('/todos')

@@ -10,7 +10,8 @@ function TodoList() {
     const api = useApi()
 
     const handleToggle = useCallback(todo => {
-        api.put(`/todos/${todo.id}`, todo)
+        /* api.put(`/todos/${todo.id}`, todo) */
+        api.put(`/todos/666`, todo)
             .then(response => {
                 dispatch({type: 'todos/updated', payload: response.data})
             })
