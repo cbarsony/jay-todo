@@ -1,6 +1,7 @@
 import { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
 import useApi from '../hooks/api'
+import todosSlice from '../slices/todosSlice'
 
 function AddTodo() {
     const [todoText, setTodoText] = useState('')
@@ -13,7 +14,9 @@ function AddTodo() {
 
     const handleAddTodo = useCallback(() => {
         api.post('/todos', {text: todoText})
-            .then(response => dispatch({type: 'todos/loaded', payload: response.data}))
+            .then(response => {
+                dispatch(todosSlice.actions.loaded(response.data))
+            })
 
         setTodoText('')
     }, [api, dispatch, todoText])

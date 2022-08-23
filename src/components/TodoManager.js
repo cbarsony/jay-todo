@@ -1,5 +1,7 @@
 import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import filterSlice from '../slices/filterSlice'
+import { FILTER_ACTION } from '../slices/filterSlice'
 
 function TodoManager() {
     const filter = useSelector(store => store.filter)
@@ -9,11 +11,11 @@ function TodoManager() {
     const isPendingChecked = filter === 'ALL' || filter === 'PENDING'
 
     const handleCompletedChange = useCallback(e => {
-        dispatch({ type: e.target.checked ? 'c-on' : 'c-off' })
+        dispatch(filterSlice.actions.change(e.target.checked ? FILTER_ACTION.COMPLETED_ON : FILTER_ACTION.COMPLETED_OFF))
     }, [dispatch])
 
     const handlePendingChange = useCallback(e => {
-        dispatch({ type: e.target.checked ? 'p-on' : 'p-off' })
+        dispatch(filterSlice.actions.change(e.target.checked ? FILTER_ACTION.PENDING_ON : FILTER_ACTION.PENDING_OFF))
     }, [dispatch])
 
     const handleClearClick = useCallback(() => {

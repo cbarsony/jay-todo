@@ -1,11 +1,12 @@
-import { useDebounce } from '../hooks/debounce'
 import { useDispatch } from 'react-redux'
+import { useDebounce } from '../hooks/debounce'
+import queryFilterSlice from '../slices/querySlice'
 
 function QueryFilter() {
     const dispatch = useDispatch()
 
     const [query, setQuery] = useDebounce('', filterValue => {
-        dispatch({type: 'queryFilter/changed', payload: filterValue})
+        dispatch(queryFilterSlice.actions.changed(filterValue))
     })
   
     return (

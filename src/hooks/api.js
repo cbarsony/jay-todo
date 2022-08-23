@@ -29,29 +29,4 @@ const useApi = () => {
   return api
 }
 
-/* const useApi = () => {
-  const toaster = useToast();
-  const history = useNavigate();
-
-  const proxy = useMemo(
-    () =>
-      new Proxy(axios, {
-        get(axios, prop) {
-          // prop = 'put'
-          return axios[prop].catch(error => {
-            const status = error.response?.data?.status ?? 500;
-            const message = error.response?.data?.message ?? 'Something went wrong';
-            toaster.error(message);
-            if (status === 401) {
-              return history.push('/login');
-            }
-          });
-        }
-      }),
-    [toaster, history]
-  );
-
-  return proxy;
-} */
-
 export default useApi
