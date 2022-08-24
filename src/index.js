@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import TodoApp from './components/TodoApp'
+import Login from './components/Login'
 import store from './store/store.js'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
@@ -15,7 +16,7 @@ root.render(
           <TodoApp />
         </Route>
         <Route path="/login">
-          <div>login...</div>
+          <Login />
         </Route>
       </Switch>
     </Router>

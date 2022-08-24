@@ -1,29 +1,20 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 import TodoManager from './TodoManager'
 import QueryFilter from './QueryFilter'
-import useApi from '../hooks/api'
-import todosSlice from '../slices/todosSlice'
+import useInit from '../hooks/init'
 
 const TodoApp = () => {
-    const dispatch = useDispatch()
-    const api = useApi()
+    const init = useInit()
 
-    useEffect(() => {
-        api.get('/todos')
-            .then(response => dispatch(todosSlice.actions.loaded(response.data)))
-      }, [api, dispatch])
-
-    return (
+    return init ? (
         <>
             <QueryFilter />
             <AddTodo />
             <TodoList />
             <TodoManager />
         </>
-    )
+    ) : <div>loading...</div>
 }
 
 export default TodoApp

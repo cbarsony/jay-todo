@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const todosSlice = createSlice({
     name: 'todos',
-    initialState: [],
+    initialState: null,
     reducers: {
         loaded: (state, action) => {
             return action.payload

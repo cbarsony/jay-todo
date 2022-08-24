@@ -17,7 +17,7 @@ const filterSlice = createSlice({
     name: 'filter',
     initialState: FILTER_STATE.ALL,
     reducers: {
-        change: (state, action) => {
+        changed: (state, action) => {
             switch(state) {
     
                 case 'ALL':

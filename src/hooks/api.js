@@ -8,6 +8,7 @@ const useApi = () => {
   const history = useHistory()
   const api = useMemo(() => {
     const axios = Axios.create({baseURL: 'http://localhost:3001'})
+    axios.defaults.withCredentials = true
 
     axios.interceptors.response.use(config => {
         console.log(config)

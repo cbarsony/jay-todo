@@ -11,11 +11,11 @@ function TodoManager() {
     const isPendingChecked = filter === 'ALL' || filter === 'PENDING'
 
     const handleCompletedChange = useCallback(e => {
-        dispatch(filterSlice.actions.change(e.target.checked ? FILTER_ACTION.COMPLETED_ON : FILTER_ACTION.COMPLETED_OFF))
+        dispatch(filterSlice.actions.changed(e.target.checked ? FILTER_ACTION.COMPLETED_ON : FILTER_ACTION.COMPLETED_OFF))
     }, [dispatch])
 
     const handlePendingChange = useCallback(e => {
-        dispatch(filterSlice.actions.change(e.target.checked ? FILTER_ACTION.PENDING_ON : FILTER_ACTION.PENDING_OFF))
+        dispatch(filterSlice.actions.changed(e.target.checked ? FILTER_ACTION.PENDING_ON : FILTER_ACTION.PENDING_OFF))
     }, [dispatch])
 
     const handleClearClick = useCallback(() => {
