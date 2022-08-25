@@ -3,6 +3,7 @@ import { createSelector } from 'reselect'
 const getTodos = state => state.todos
 const getFilter = state => state.filter
 const getQueryFilter = state => state.queryFilter
+export const getUser = state => state.user
 
 export const getFilteredTodos = createSelector(
     [getTodos, getFilter, getQueryFilter],

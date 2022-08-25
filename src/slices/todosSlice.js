@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAction } from '@reduxjs/toolkit'
+
+const reset = createAction('reset')
 
 const todosSlice = createSlice({
     name: 'todos',
@@ -13,6 +15,11 @@ const todosSlice = createSlice({
         cleared: () => {
             return []
         },
+    },
+    extraReducers: {
+        [reset]: (state, action) => {
+            return null
+        }
     },
 })
 
