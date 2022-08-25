@@ -1,20 +1,18 @@
 import { useCallback } from 'react'
-//import { useDispatch } from 'react-redux'
-//import { useHistory } from 'react-router-dom'
-import useApi from '../hooks/api'
+import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
+import useApi from '../hooks/useApi'
 
 const Logout = () => {
     const api = useApi()
-    //const history = useHistory()
-    //const dispatch = useDispatch()
+    const history = useHistory()
+    const dispatch = useDispatch()
 
     const onLogoutClick = useCallback(async() => {
         await api.get('/logout')
-        // Should do this instead of redirect
-        /* history.push('/login')
-        dispatch({type: 'reset'}) */
-        window.location = '/login'
-    }, [api])
+        history.push('/login')
+        dispatch({type: 'reset'})
+    }, [api, history, dispatch])
 
     return (
         <div>

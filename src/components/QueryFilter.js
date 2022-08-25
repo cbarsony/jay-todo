@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { useDebounce } from '../hooks/debounce'
+import { useDebounce } from '../hooks/useDebounce'
 import queryFilterSlice from '../slices/querySlice'
 
 function QueryFilter() {

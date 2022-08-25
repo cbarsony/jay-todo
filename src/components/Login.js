@@ -1,13 +1,15 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import useApi from '../hooks/api'
-import useToast from '../hooks/toast'
+import useAuth from '../hooks/useAuth'
+import useApi from '../hooks/useApi'
+import useToast from '../hooks/useToast'
 import userSlice from '../slices/userSlice'
 
 const Login = () => {
     const [username, setUsername] = useState('user1')
     const [password, setPassword] = useState('pass')
+    const auth = useAuth()
     const api = useApi()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -15,6 +17,12 @@ const Login = () => {
 
     const onUsernameChange = e => setUsername(e.target.value)
     const onPasswordChange = e => setPassword(e.target.value)
+
+    useEffect(() => {
+        if(auth) {
+            history.push('/')
+        }
+    }, [history, auth])
 
     const onLoginClick = useCallback(() => {
         api.post('/login', {username, password})

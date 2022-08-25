@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { getFilteredTodos } from '../store/selectors'
 import TodoItem from './TodoItem'
-import useApi from '../hooks/api'
+import useApi from '../hooks/useApi'
 import todosSlice from '../slices/todosSlice'
 
 function TodoList() {

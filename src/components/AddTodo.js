@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { useDispatch } from 'react-redux'
-import useApi from '../hooks/api'
+import useApi from '../hooks/useApi'
 import todosSlice from '../slices/todosSlice'
 
 function AddTodo() {

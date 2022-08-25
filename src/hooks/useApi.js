@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { useHistory } from 'react-router-dom'
 import Axios from 'axios'
-import useToast from './toast'
+import useToast from './useToast'
 
 const useApi = () => {
   const toast = useToast()

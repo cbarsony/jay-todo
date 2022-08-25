@@ -3,7 +3,7 @@ import TodoList from './TodoList'
 import TodoManager from './TodoManager'
 import QueryFilter from './QueryFilter'
 import Logout from './Logout'
-import useInit from '../hooks/init'
+import useInit from '../hooks/useInit'
 
 const TodoApp = () => {
     const init = useInit()
